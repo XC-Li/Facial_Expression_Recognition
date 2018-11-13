@@ -4,7 +4,7 @@ Final Project for Deep Learning @GWU
 ## 目录
 
 1. [文献综述](./LiteratureReview)文件夹，用来放各种文章和论文
-2. [数据]("./Data_Source.md")文件，用来放各种数据
+2. [数据](./Data_Source.md)文件，用来放各种数据
 
 ## 进度
 
