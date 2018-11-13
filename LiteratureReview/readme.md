@@ -6,3 +6,6 @@
 [CS231n课程笔记翻译：卷积神经网络笔记](https://zhuanlan.zhihu.com/p/22038289)
 
 [94页论文综述卷积神经网络：从基础技术到研究前景](https://zhuanlan.zhihu.com/p/35388569)
+
+[我的深度学习专项 CNN 例子-使用Keras](https://github.com/XC-Li/Deep_Learning_Andrew_Ng/blob/master/Part%204%20Convolutional%20Neural%20Networks/2-Keras%2B-%2BTutorial%2B-%2BHappy%2BHouse%2Bv2.ipynb)
+[更多例子](https://github.com/XC-Li/Deep_Learning_Andrew_Ng/tree/master/Part%204%20Convolutional%20Neural%20Networks)
