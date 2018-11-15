@@ -17,3 +17,20 @@
    ```
    conda install -c conda-forge tensorflow
    ```
+3. Setup Jupyter notebook  
+   See https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments   
+   https://stackoverflow.com/questions/39604271/conda-environments-not-showing-up-in-jupyter-notebook
+   ```
+   // in base
+   conda install nb_conda
+
+   conda activate deeplearning
+   conda install ipykernel
+   python -m ipykernel install --user --name deeplearning --display-name "Python (DeepLearning)"
+   ```
+
+## conda packages
+```
+conda install matplotlib
+conda install matplotlib pillow
+```
