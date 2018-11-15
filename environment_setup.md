@@ -31,6 +31,9 @@
 
 ## conda packages
 ```
-conda install matplotlib
-conda install matplotlib pillow
+conda install 
+matplotlib
+matplotlib pillow
+tqdm
+
 ```
