@@ -7,10 +7,16 @@ Final Project for Deep Learning @GWU
 2. [数据](./Data_Source.md)文件，用来放各种数据
 
 ## 原型机
+200 epoch in 40 minute
+
+![](./image/loss.PNG)
+
+![](./image/accuracy.PNG)
+
+![](./image/overfitting.PNG)
 
 1. terminal下 用unzip命令解压 RAFDB/aligned.zip至同目录
-2. terminal下 sudo pip install tqdm
-3. 运行 Prototype/V1-George. py
+2. 运行 Prototype/V1-George. py
    
 
 ## 进度
