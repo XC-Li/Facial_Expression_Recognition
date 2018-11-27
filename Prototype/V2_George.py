@@ -12,7 +12,7 @@ import V2_models
 num_epoch = 5
 batch_size = 32
 model = V2_models.first_model()
-
+# todo: Add Command Line support for epoch and model selection for faster development.
 log_name = input("What's the name of this run?:")
 
 # create image label pair as a dictionary
