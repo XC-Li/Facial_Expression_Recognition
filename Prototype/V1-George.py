@@ -1,8 +1,14 @@
 import tensorflow as tf
 import numpy as np
 
-label2expression = {1: "Surprise",2: "Fear",3: "Disgust",4: "Happiness",
-                    5: "Sadness", 6: "Anger",7: "Neutral"}
+log_name = input("What's the name of this run?:")
+while len(log_name) == 0:
+    print("Please input a log name")
+    log_name = input("What's the name of this run?:")
+
+
+label2expression = {1: "Surprise", 2: "Fear", 3: "Disgust", 4: "Happiness",
+                    5: "Sadness", 6: "Anger", 7: "Neutral"}
 
 # create image label pair as a dictionary
 label_file = "../RAFDB/list_patition_label.txt"
@@ -50,6 +56,7 @@ test_img, test_label = load_to_numpy(test_img_label_pair)
 from tensorflow.keras import layers
 print(tf.keras.__version__)
 
+# first model
 model = tf.keras.Sequential([
     layers.Conv2D(64, kernel_size=3, activation='relu', input_shape=(100,100,3)),
     layers.Conv2D(32, kernel_size=3, activation='relu'),
@@ -65,21 +72,28 @@ num_epoch = 5
 
 from tensorflow.keras.callbacks import TensorBoard
 
-log_name = input("What's the name of this log?")
-while len(log_name) == 0:
-    print("Please input a log name")
-    log_name = input("What's the name of this log?")
 
-tb = TensorBoard(log_dir="logs/" + log_name)
-history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=32, callbacks=[tb])
+import time
+tb = TensorBoard(log_dir="logs/" + log_name + time.ctime())
+history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=32,
+                    validation_data=(test_img, test_label), callbacks=[tb])
 
 import matplotlib.pyplot as plt
-plt.plot(np.linspace(1, num_epoch, num_epoch), np.array(history.history["categorical_accuracy"]), label='Accuracy')
+plt.plot(np.linspace(1, num_epoch, num_epoch),
+         np.array(history.history["categorical_accuracy"]), label='Accuracy', color='b')
+plt.plot(np.linspace(1, num_epoch, num_epoch),
+         np.array(history.history["val_categorical_accuracy"]), label='Validation Accuracy', color='r')
 plt.legend()
-plt.show()
-plt.plot(np.linspace(1, num_epoch, num_epoch), np.array(history.history["loss"]), label='loss')
+plt.title("Accuracy"+log_name+time.ctime())
+plt.savefig("./imgs/Accuracy "+log_name+" "+time.ctime())
+# plt.show()
+plt.plot(np.linspace(1, num_epoch, num_epoch), np.array(history.history["loss"]), label='Loss', color='b')
+plt.plot(np.linspace(1, num_epoch, num_epoch),
+         np.array(history.history["val_loss"]), label='Validation Loss', color='r')
 plt.legend()
-plt.show()
+plt.title("Loss"+log_name+time.ctime())
+plt.savefig("./imgs/Loss "+log_name+" "+time.ctime())
+# plt.show()
 
 
 loss, accuracy = model.evaluate(test_img, test_label,batch_size=32)
