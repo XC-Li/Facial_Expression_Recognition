@@ -1,11 +1,17 @@
 """
 Prototype V2
+Main Program
 By: Xiaochi (George) Li
 Nov.2018
 """
 
 import tensorflow as tf
 import V2_helper
+import V2_models
+
+num_epoch = 5
+batch_size = 32
+model = V2_models.first_model()
 
 log_name = input("What's the name of this run?:")
 
@@ -25,32 +31,12 @@ except:
     print("First time reading data, saving to pickle to speed up next time")
     pickle.dump((train_img, train_label, test_img, test_label), open("processed_data.pickle", 'wb'))
 
-# Keras model
-# ======================================================================
-from tensorflow.keras import layers
-print(tf.keras.__version__)
-
-# first model
-model = tf.keras.Sequential([
-    layers.Conv2D(64, kernel_size=3, activation='relu', input_shape=(100,100,3)),
-    layers.Conv2D(32, kernel_size=3, activation='relu'),
-    layers.Flatten(),
-    layers.Dense(7, activation='softmax')
-])
-
-model.compile(optimizer=tf.train.AdadeltaOptimizer(0.001),
-              loss='categorical_crossentropy',
-             metrics=[tf.keras.metrics.categorical_accuracy])
-
-num_epoch = 5
-
+# Keras model and Tensor Board
 from tensorflow.keras.callbacks import TensorBoard
 import time
 tb = TensorBoard(log_dir="logs/" + log_name +" "+ time.ctime())
-history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=32,
+history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=batch_size,
                     validation_data=(test_img, test_label), callbacks=[tb])
-
-# ===============================================================================
 
 V2_helper.plot(history, log_name, num_epoch)
 

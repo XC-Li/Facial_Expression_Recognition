@@ -1,4 +1,9 @@
-
+"""
+Prototype V2 Helper
+label loader, data loader and plot for accuracy and loss
+By: Xiaochi (George) Li
+Nov.2018
+"""
 from PIL import Image
 import numpy as np
 import time
