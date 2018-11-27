@@ -1,3 +1,9 @@
+"""
+Prototype V1
+By: Xiaochi (George) Li
+Nov.2018
+"""
+
 import tensorflow as tf
 import numpy as np
 
@@ -26,6 +32,8 @@ with open(label_file) as all_label:
 folder = "../RAFDB/aligned/"
 
 from PIL import Image
+
+
 def load_to_numpy(img_label_pair):
     length = 100
     width = 100
@@ -42,15 +50,23 @@ def load_to_numpy(img_label_pair):
         # labels[i] = img_label_pair[image_name]
         labels[i, img_label_pair[image_name]-1] = 1
         i += 1
-
-
     return imgs, labels
 
 
-print("Loading Train Data")
-train_img, train_label = load_to_numpy(train_img_label_pair)
-print("Loading Test Data")
-test_img, test_label = load_to_numpy(test_img_label_pair)
+# Use pickle to speed up reading data
+import pickle
+try:
+    with open("processed_data.pickle", 'rb') as data_file:
+        print("Loading Data")
+        train_img, train_label, test_img, test_label = pickle.load(data_file)
+except:
+    print("Loading Train Data")
+    train_img, train_label = load_to_numpy(train_img_label_pair)
+    print("Loading Test Data")
+    test_img, test_label = load_to_numpy(test_img_label_pair)
+    with open("processed_data.pickle", 'wb') as data_file:
+        print("First time reading data, saving to pickle to speed up next time")
+        pickle.dump((train_img, train_label, test_img, test_label), data_file)
 
 # Keras model
 from tensorflow.keras import layers
@@ -74,7 +90,7 @@ from tensorflow.keras.callbacks import TensorBoard
 
 
 import time
-tb = TensorBoard(log_dir="logs/" + log_name + time.ctime())
+tb = TensorBoard(log_dir="logs/" + log_name +" "+ time.ctime())
 history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=32,
                     validation_data=(test_img, test_label), callbacks=[tb])
 
