@@ -41,7 +41,11 @@ history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=batch_s
                     validation_data=(test_img, test_label), callbacks=[tb])
 
 V2_helper.plot(history, log_name, num_epoch)
-
+import os
+if not os.path.exists("./trained_model"):
+    print("First run, make dir")
+    os.makedirs("./trained_model")
+model.save("./trained_model/"+log_name+".h5")
 loss, accuracy = model.evaluate(test_img, test_label,batch_size=32)
 print("test loss:", loss)
 print("test accuracy:", accuracy)
