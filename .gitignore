@@ -1,3 +1,6 @@
 
 Prototype/.ipynb_checkpoints/*
 RAFDB/aligned/*
+*.pickle
+*.xml
+*.iml

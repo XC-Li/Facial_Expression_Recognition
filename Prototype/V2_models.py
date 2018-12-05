@@ -21,3 +21,16 @@ def first_model():
                  metrics=[tf.keras.metrics.categorical_accuracy])
 
     return model
+
+# models 2
+
+
+
+# model 3
+
+# model 4
+
+
+#model 5
+
+# test
