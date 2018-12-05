@@ -34,6 +34,8 @@ def load_to_numpy(img_label_pair, folder):
     for image_name in img_label_pair:
         img = Image.open(folder + image_name).convert('RGB')
         img = np.array(img).reshape((100,100,3))
+        # important: normalize to [0,1]
+        img = img/255
         # imgs = np.append(imgs, img, axis=0)
         imgs[i] = img # faster approach! learning algorithm is useful
         # labels[i] = img_label_pair[image_name]
@@ -44,6 +46,10 @@ def load_to_numpy(img_label_pair, folder):
 
 def plot(history, log_name, num_epoch):
     import matplotlib.pyplot as plt
+    import os
+    if not os.path.exists("./imgs"):
+        print("First run, make dir")
+        os.makedirs("./imgs")
     plt.plot(np.linspace(1, num_epoch, num_epoch),
              np.array(history.history["categorical_accuracy"]), label='Accuracy', color='b')
     plt.plot(np.linspace(1, num_epoch, num_epoch),
