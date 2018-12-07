@@ -22,3 +22,18 @@ def first_model():
 
     return model
 
+# Adding the second model with Adam optimizer
+def second_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(64, kernel_size=3, activation='relu', input_shape=(100,100,3)),
+        layers.Conv2D(32, kernel_size=3, activation='relu'),
+        layers.Flatten(),
+        layers.Dense(7, activation='softmax')
+    ])
+
+    model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.01),
+                  loss='categorical_crossentropy',
+                 metrics=[tf.keras.metrics.categorical_accuracy])
+
+    return model
+
