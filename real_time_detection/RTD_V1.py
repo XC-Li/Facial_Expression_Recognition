@@ -1,7 +1,8 @@
 import cv2
-from time import sleep
+"""I don't know why, but the program just stop working"""
+# from time import sleep
 import matplotlib.pyplot as plt
-
+print("1")
 cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 video_capture = cv2.VideoCapture(0)
@@ -10,7 +11,6 @@ video_capture = cv2.VideoCapture(0)
 while True:
     if not video_capture.isOpened():
         print('Unable to load camera.')
-        sleep(5)
         pass
 
     # Capture frame-by-frame
@@ -24,18 +24,14 @@ while True:
         minNeighbors=5,
         minSize=(150,150)
     )
-    print(faces)
-    cropped = frame
+
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
-        cropped = frame[x-20:x+50, y-20:y+50]
-        print(x,y,w,h)
+        cropped = frame[y:y+h, x:x+w]
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-    # Display the resulting frame
+
     cv2.imshow('Video', frame)
-    sleep(1)
-    cv2.imshow('cropped', cropped)
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):

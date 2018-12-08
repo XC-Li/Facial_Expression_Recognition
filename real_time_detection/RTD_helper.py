@@ -1,4 +1,13 @@
+"""
+Real Time Facial Expression Detection Helper Function
+By: Xiaochi (George) Li
+Dec.2018
+
+"""
+
 from tensorflow.keras.models import load_model
+from tensorflow.logging import set_verbosity
+from tensorflow.logging import ERROR
 import numpy as np
 
 def prediction(img):
@@ -15,6 +24,7 @@ def prediction(img):
     model_dir = '../Prototype/trained_model/'
     model_file = 'first_model.h5'
 
+    set_verbosity(ERROR)
     label2expression = {1: "Surprise", 2: "Fear", 3: "Disgust", 4: "Happiness",
                         5: "Sadness", 6: "Anger", 7: "Neutral"}
     model = load_model(model_dir + model_file)
