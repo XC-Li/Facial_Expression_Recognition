@@ -57,7 +57,7 @@ def third_model():
 
     return model
 
-# Adding some dense and dropout layers
+# Adding the dense and dropout layers
 # Accuracy around
 def fourth_model():
     model = tf.keras.Sequential([
