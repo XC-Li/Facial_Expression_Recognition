@@ -23,6 +23,7 @@ def first_model():
 
     return model
 
+
 # Adding the second model with the maxpooling layer
 # Accuracy around 66% (epoch=200)
 def second_model():
@@ -76,3 +77,4 @@ def fourth_model():
                  metrics=[tf.keras.metrics.categorical_accuracy])
 
     return model
+
