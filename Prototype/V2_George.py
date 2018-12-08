@@ -10,10 +10,11 @@ Nov.2018
 import tensorflow as tf
 import V2_helper
 import V2_models
+import Xiaochi_models
 
 num_epoch = 100
 batch_size = 32
-model = V2_models.fourth_model()
+model = Xiaochi_models.first_model()
 # todo: Add Command Line support for epoch and model selection for faster development.
 log_name = input("What's the name of this run?:")
 
