@@ -22,7 +22,7 @@ def prediction(img):
         detail: dict of probabilty of all emotions
     """
     model_dir = '../Prototype/trained_model/'
-    model_file = 'first_model.h5'
+    model_file = '3rd.h5'
 
     set_verbosity(ERROR)
     label2expression = {1: "Surprise", 2: "Fear", 3: "Disgust", 4: "Happiness",
