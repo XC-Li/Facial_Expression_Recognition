@@ -22,18 +22,18 @@ def label_loader(label_file):
     return train_img_label_pair, test_img_label_pair
 
 
-def load_to_numpy(img_label_pair, folder):
-
-    length = 100
-    width = 100
+def load_to_numpy(img_label_pair, folder, shape):
+    width = shape[0]
+    height = shape[1]
     limit = len(img_label_pair)
     labels = np.zeros((limit, 7))
-    imgs = np.empty((limit, length, width, 3))
+    imgs = np.empty((limit, width, height, 3))
 
     i = 0
     for image_name in img_label_pair:
         img = Image.open(folder + image_name).convert('RGB')
-        img = np.array(img).reshape((100,100,3))
+        img = img.resize((width, height))
+        img = np.array(img).reshape((width, height, 3))
         # important: normalize to [0,1]
         img = img/255
         # imgs = np.append(imgs, img, axis=0)
