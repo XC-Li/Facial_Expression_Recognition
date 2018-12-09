@@ -13,7 +13,7 @@ import V2_models
 
 num_epoch = 100
 batch_size = 32
-model = V2_models.fourth_model()
+model = V2_models.sgd_model()
 # todo: Add Command Line support for epoch and model selection for faster development.
 log_name = input("What's the name of this run?:")
 

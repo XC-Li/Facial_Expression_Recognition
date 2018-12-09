@@ -24,7 +24,7 @@ def first_model():
     return model
 
 
-# Adding the second model with the maxpooling layer
+# Adding the maxpooling layer
 # Accuracy around 66% (epoch=200)
 def second_model():
     model = tf.keras.Sequential([
@@ -41,7 +41,7 @@ def second_model():
 
     return model
 
-# Adding the third model with modified filter number
+# Modified the filter number
 # Accuracy around 66% (epoch=100)
 def third_model():
     model = tf.keras.Sequential([
@@ -59,16 +59,16 @@ def third_model():
     return model
 
 # Adding the dense and dropout layers
-# Accuracy around
+# Accuracy around 66.62% (epoch=100)
 def fourth_model():
     model = tf.keras.Sequential([
         layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=(100,100,3)),
         layers.Conv2D(128, kernel_size=3, activation='relu'),
         layers.MaxPooling2D(pool_size=(2, 2)),
-        layers.Dropout(0.25),
+        layers.Dropout(0.1),
         layers.Flatten(),
-        layers.Dense(64, activation='relu'),
-        layers.Dropout(0.4),
+        layers.Dense(32, activation='relu'),
+        layers.Dropout(0.1),
         layers.Dense(7, activation='softmax')
     ])
 
@@ -78,3 +78,82 @@ def fourth_model():
 
     return model
 
+# Modified with Adam optimizer
+# Accuracy around 96%/68.84% (epoch=100)
+def fifth_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=(100,100,3)),
+        layers.Conv2D(128, kernel_size=3, activation='relu'),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Dropout(0.1),
+        layers.Flatten(),
+        layers.Dense(32, activation='relu'),
+        layers.Dropout(0.1),
+        layers.Dense(7, activation='softmax')
+    ])
+
+    model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001),
+                  loss='categorical_crossentropy',
+                 metrics=[tf.keras.metrics.categorical_accuracy])
+
+    return model
+
+# Modified with Adadelta optimizer
+# Accuracy around 99%/74% (epoch=100)
+def Adadelta_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=(100,100,3)),
+        layers.Conv2D(128, kernel_size=3, activation='relu'),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Dropout(0.1),
+        layers.Flatten(),
+        layers.Dense(32, activation='relu'),
+        layers.Dropout(0.1),
+        layers.Dense(7, activation='softmax')
+    ])
+
+    model.compile(optimizer=tf.keras.optimizers.Adadelta(lr=1.0),
+                  loss='categorical_crossentropy',
+                 metrics=[tf.keras.metrics.categorical_accuracy])
+
+    return model
+
+# Modified with RMSprop optimizer
+# Accuracy around 95%/67% (epoch=100)
+def rmsprop_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=(100,100,3)),
+        layers.Conv2D(128, kernel_size=3, activation='relu'),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Dropout(0.1),
+        layers.Flatten(),
+        layers.Dense(32, activation='relu'),
+        layers.Dropout(0.1),
+        layers.Dense(7, activation='softmax')
+    ])
+
+    model.compile(optimizer=tf.keras.optimizers.RMSprop(lr=0.001),
+                  loss='categorical_crossentropy',
+                 metrics=[tf.keras.metrics.categorical_accuracy])
+
+    return model
+
+# Modified with SGD optimizer
+# Accuracy around 99%/73% (epoch=100)
+def sgd_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=(100,100,3)),
+        layers.Conv2D(128, kernel_size=3, activation='relu'),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Dropout(0.1),
+        layers.Flatten(),
+        layers.Dense(32, activation='relu'),
+        layers.Dropout(0.1),
+        layers.Dense(7, activation='softmax')
+    ])
+
+    model.compile(optimizer=tf.keras.optimizers.SGD(lr=0.01),
+                  loss='categorical_crossentropy',
+                 metrics=[tf.keras.metrics.categorical_accuracy])
+
+    return model
