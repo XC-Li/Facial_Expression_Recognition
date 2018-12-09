@@ -19,6 +19,10 @@ input_shape = (100, 100)
 
 model = Xiaochi_models.light_vgg()
 
+
+num_epoch = 100
+batch_size = 32
+model = V2_models.sgd_model()
 log_name = input("What's the name of this run?:")
 
 # create image label pair as a dictionary
