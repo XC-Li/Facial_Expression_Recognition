@@ -21,8 +21,8 @@ def prediction(img):
         predict: String of best predict
         detail: dict of probabilty of all emotions
     """
-    model_dir = '../Prototype/trained_model/'
-    model_file = '3rd.h5'
+    model_dir = './'
+    model_file = 'lightvgg2.h5'
 
     set_verbosity(ERROR)
     label2expression = {1: "Surprise", 2: "Fear", 3: "Disgust", 4: "Happiness",
