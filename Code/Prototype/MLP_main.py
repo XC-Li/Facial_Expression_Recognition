@@ -13,11 +13,11 @@ import MLP_model
 import datetime
 
 num_epoch = 60
-batch_size = 64
+batch_size = 32
 
 
 # --------------------------------------------------------------------------------------
-model = MLP_model.m_2()
+model = MLP_model.m_3()
 # --------------------------------------------------------------------------------------
 
 # todo: Add Command Line support for epoch and model selection for faster development.
