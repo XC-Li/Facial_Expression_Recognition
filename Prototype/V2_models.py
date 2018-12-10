@@ -1,7 +1,7 @@
 """
 Prototype V2
 Different Keras Models
-By: Xiaochi (George) Li
+By: Liwei Zhu
 Nov.2018
 """
 
