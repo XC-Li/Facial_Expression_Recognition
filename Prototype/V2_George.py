@@ -3,7 +3,7 @@
 """
 Prototype V2
 Main Program
-By: Xiaochi (George) Li
+By: Xiaochi (George) Li & Adjusted by Liwei Zhu for CNN models evaluation
 Nov.2018
 """
 
