@@ -4,3 +4,4 @@ RAFDB/aligned/*
 *.pickle
 *.xml
 *.iml
+*.h5

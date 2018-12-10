@@ -56,12 +56,12 @@ def light_vgg2():
 
     """
     model = Sequential([
-        # Block 1: in:100x100x3, out:50x50x8
+        # Block 1: in:100x100x3, out:50x50x16
         layers.Conv2D(8, (3, 3), activation='relu', padding='same', name='b1_conv1'),
         layers.Conv2D(8, (3, 3), activation='relu', padding='same', name='b1_conv2'),
         layers.MaxPooling2D((2, 2), strides=(2, 2), name='b1_maxpool'),
 
-        # Block 2 in:50x50x8, out:25x25x16
+        # Block 2 in:50x50x16, out:25x25x32
         layers.Conv2D(16, (3, 3), activation='relu', padding='same', name='b2_conv1'),
         layers.Conv2D(16, (3, 3), activation='relu', padding='same', name='b2_conv2'),
         layers.MaxPooling2D((2, 2), strides=(2, 2), name='b2_maxpool'),
