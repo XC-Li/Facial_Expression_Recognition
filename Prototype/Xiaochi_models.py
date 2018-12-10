@@ -52,21 +52,21 @@ def light_vgg():
 def light_vgg2():
     """
     this model is inspired by vgg net, but lighter
-    CV_Accuracy ~75% in 10 epoch, 12s per epoch
+    CV_Accuracy ~75% in 10 epoch, 6s per epoch
 
     """
     model = Sequential([
-        # Block 1: in:100x100x3, out:50x50x16
+        # Block 1: in:100x100x3, out:50x50x8
         layers.Conv2D(8, (3, 3), activation='relu', padding='same', name='b1_conv1'),
         layers.Conv2D(8, (3, 3), activation='relu', padding='same', name='b1_conv2'),
         layers.MaxPooling2D((2, 2), strides=(2, 2), name='b1_maxpool'),
 
-        # Block 2 in:50x50x16, out:25x25x32
+        # Block 2 in:50x50x8, out:25x25x16
         layers.Conv2D(16, (3, 3), activation='relu', padding='same', name='b2_conv1'),
         layers.Conv2D(16, (3, 3), activation='relu', padding='same', name='b2_conv2'),
         layers.MaxPooling2D((2, 2), strides=(2, 2), name='b2_maxpool'),
 
-        # Blcok 3 in:25x25x32, out:12x12x64
+        # Blcok 3 in:25x25x16, out:12x12x32
         # layers.Conv2D(32, (3, 3), activation='relu', padding='same', name='b3_conv1'),
         # layers.Conv2D(32, (3, 3), activation='relu', padding='same', name='b3_conv2'),
         # layers.MaxPooling2D((2, 2), strides=(2, 2), name='b3_maxpool'),
