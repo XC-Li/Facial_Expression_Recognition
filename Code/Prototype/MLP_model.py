@@ -10,10 +10,6 @@ from tensorflow import keras
 from keras import optimizers
 
 hidden1_num = 50
-hidden2_num = 50
-hidden3_num = 50
-hidden4_num = 50
-hidden5_num = 50
 output_num = 7
 
 
