@@ -1,6 +1,6 @@
 
 */.ipynb_checkpoints/*
-RAFDB/aligned/*
+/Code/RAFDB/aligned/*
 *.pickle
 *.xml
 *.iml
