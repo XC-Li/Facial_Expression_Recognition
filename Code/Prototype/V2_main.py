@@ -3,7 +3,7 @@
 """
 Prototype V2
 Main Program
-By: Xiaochi (George) Li & Adjusted by Liwei Zhu for CNN models evaluation
+By: Xiaochi (George) Li
 Nov.2018
 """
 
@@ -13,16 +13,12 @@ import V2_models
 import Xiaochi_models
 
 
-num_epoch = 100
+num_epoch = 20
 batch_size = 64
 input_shape = (100, 100)
 
 model = Xiaochi_models.light_vgg2()
 
-
-num_epoch = 100
-batch_size = 32
-model = V2_models.sgd_model()
 log_name = input("What's the name of this run?:")
 
 # create image label pair as a dictionary
@@ -46,6 +42,12 @@ except:
     except:
         print("can't save, file too big")
 
+
+import os
+if not os.path.exists("./trained_model"):
+    print("First run, make model dir")
+    os.makedirs("./trained_model")
+
 # Keras model and Tensor Board
 from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint
 import time
@@ -57,10 +59,7 @@ history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=batch_s
 model.summary()
 
 V2_helper.plot(history, log_name, num_epoch)
-import os
-if not os.path.exists("./trained_model"):
-    print("First run, make dir")
-    os.makedirs("./trained_model")
+
 model.save("./trained_model/"+log_name+".h5")
 loss, accuracy = model.evaluate(test_img, test_label,batch_size=32)
 print("test loss:", loss)
