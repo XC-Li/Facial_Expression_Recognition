@@ -13,7 +13,7 @@ import MLP_model
 import datetime
 
 num_epoch = 60
-batch_size = 64
+batch_size = 32
 
 
 # --------------------------------------------------------------------------------------
