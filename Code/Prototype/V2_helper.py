@@ -10,6 +10,15 @@ import time
 
 
 def label_loader(label_file):
+    """
+    label loader function
+    read list_partition_label.txt of RAF-DB and generate image name label pair
+    :parameter
+        label_file: String, path of the label file
+    :return
+        train_img_label_pair: Dict: image_name -> expression label
+        test_img_label_pair: Dict: image_name -> expression label
+    """
     train_img_label_pair = {}
     test_img_label_pair ={}
     with open(label_file) as all_label:
@@ -23,6 +32,14 @@ def label_loader(label_file):
 
 
 def load_to_numpy(img_label_pair, folder, shape):
+    """
+    load image to numpy array function
+    :param img_label_pair: Dict, image name -> expression label
+    :param folder: String: folder of the image
+    :param shape: Tuple: (int width,int height) of needed input
+    :return: imgs: Numpy NdArray shape:(len(img_label_pair), width, height, 3)
+    :return: labels: Numpy Array: shape: (len(img_label_pair), 7))
+    """
     width = shape[0]
     height = shape[1]
     limit = len(img_label_pair)
@@ -45,6 +62,12 @@ def load_to_numpy(img_label_pair, folder, shape):
 
 
 def plot(history, log_name, num_epoch):
+    """
+    plot accuracy and loss save to "./imgs"
+    :param history: tensorflow History Object
+    :param log_name: String:name of the log
+    :param num_epoch: int: number of epoches
+    """
     import matplotlib.pyplot as plt
     import os
     if not os.path.exists("./imgs"):
