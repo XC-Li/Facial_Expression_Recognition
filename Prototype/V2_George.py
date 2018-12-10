@@ -13,11 +13,11 @@ import V2_models
 import Xiaochi_models
 
 
-num_epoch = 15
+num_epoch = 100
 batch_size = 64
 input_shape = (100, 100)
 
-model = Xiaochi_models.light_vgg()
+model = Xiaochi_models.light_vgg2()
 
 
 num_epoch = 100
