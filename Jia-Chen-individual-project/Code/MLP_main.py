@@ -12,14 +12,17 @@ import MLP_helper_C
 import MLP_model
 import datetime
 
-num_epoch = 100
-batch_size = 64
-
 
 # --------------------------------------------------------------------------------------
+# Set num_epoch. Here we set it to 5 to run faster. Set to 60 can get the best performance.
+num_epoch = 5 
+batch_size = 32
+
+# --------------------------------------------------------------------------------------
+# Choose the model you want to use. m_3 is the best model we got right now.
 model = MLP_model.m_3()
-# --------------------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------------------
 # todo: Add Command Line support for epoch and model selection for faster development.
 log_name = input("What's the name of this run?:")
 
@@ -38,21 +41,25 @@ except:
     test_img, test_label = MLP_helper_C.load_to_numpy(test_img_label_pair, folder)
     print("First time reading data, saving to pickle to speed up next time")
     pickle.dump((train_img, train_label, test_img, test_label), open("processed_data_C.pickle", 'wb'))
-
+    
+# --------------------------------------------------------------------------------------
+# save model to trained_model_C
+import os
+if not os.path.exists("./trained_model_C"):
+    print("First run, make model dir")
+    os.makedirs("./trained_model_C")
+    
+# --------------------------------------------------------------------------------------
 # Keras model and Tensor Board
 from tensorflow.keras.callbacks import TensorBoard
 import time
 tb = TensorBoard(log_dir="logs_MLP/" + log_name +" "+ time.ctime())
 # ---------------------------------------------
-# print("# ---------------------------------------------")
-# Check labels
-# print(train_label[0:10])
-# print("# ---------------------------------------------")
+# Count running time
 start_time = datetime.datetime.now()
-# ----------------------------------------------------------------------------------------------------
+
 history = model.fit(train_img, train_label, epochs=num_epoch, batch_size=batch_size,
                     validation_data=(test_img, test_label), callbacks=[tb])
-# ----------------------------------------------------------------------------------------------------
 
 end_time = datetime.datetime.now()
 total_time = (end_time - start_time).seconds
@@ -60,12 +67,12 @@ print("-------------------------------------")
 print("Total running time is:", total_time)
 print("-------------------------------------")
 
-# MLP_helper_C.plot(history, log_name, num_epoch)
+# ----------------------------------------------------------------------------------------------------
+# Plot validation loss and accuracy
+MLP_helper_C.plot(history, log_name, num_epoch)
 
-import os
-if not os.path.exists("./trained_model_C"):
-    print("First run, make dir")
-    os.makedirs("./trained_model_C")
+# ----------------------------------------------------------------------------------------------------
+# save model to trained_model_C    
 model.save("./trained_model_C/"+log_name+".h5")
 loss, accuracy = model.evaluate(test_img, test_label, batch_size=batch_size)
 print("test loss:", loss)
