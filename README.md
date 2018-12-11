@@ -20,7 +20,7 @@ Real-world Affective Faces Database (RAF-DB): http://www.whdeng.cn/RAF/model1.ht
 3. Execute main program `/Code/Prototype/V2_main.py` or `python3 /Code/Prototype/V2_main.py`  
 For MLP: `python3 /Code/Prototype/MLP_main.py`
 4. Type the name of your run in python console
-5. Find the plot in `/Code/Prototype/imgs/`, the saved model in `/Code/Prototype/trained_model`, the tensorboard log in `/Code/Prototype/logs/`. For MLP: `/Code/Prototype/imgs_C/`, the saved model in `/Code/Prototype/trained_model_C`, the tensorboard log in `/Code/Prototype/logs_C/`
+5. Find the plot in `/Code/Prototype/imgs/`, the saved model in `/Code/Prototype/trained_model`, the tensorboard log in `/Code/Prototype/logs/`. For MLP: `/Code/Prototype/imgs_C/`, the saved model in `/Code/Prototype/trained_model_C`, the tensorboard log in `/Code/Prototype/logs_MLP/`
 
 Place to modify:
 In `/Code/Prototype/V2_main.py`: Line 20 `model = xxx` choose the model you want to see
