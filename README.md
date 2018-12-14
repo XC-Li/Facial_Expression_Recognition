@@ -1,20 +1,25 @@
-# Facial Expression Recognition
-Final Project for Deep Learning @ GWU  
+# Facial Expression Recognition by Convolution Neural Network
+Final Project for Deep Learning (Fall 2018)@ GWU  
 Dec. 2018
 
 Authors: Xiaochi Li, Liwei Zhu, Jia Chen
+
+**Best model: 74% Accuracy** [Download the trained model](./Code/real_time_detection/lightvgg2.h5)  
+[Read our presentation](./Final-Group-Presentation/DL_Final_Project_PPT.pdf)
 
 ![](./images/emotion_sample.JPG)
 ![](./images/rtd_gui.png)
 
 ## Data Source:
-Real-world Affective Faces Database (RAF-DB): http://www.whdeng.cn/RAF/model1.html
+Real-world Affective Faces Database (RAF-DB): http://www.whdeng.cn/RAF/model1.html   
+**To show respect to the owner, the RAF-DB data has been removed from this repo.**
 
 
 ## Usage (Training Neural Network):
 
 **Enviroment requirement**:  Tensorflow 1.10.0, Keras 2.2.2
 
+0. Contact the owner of RAF-DB to get the data set. And put `aligned.zip` and `list_patition_label.txt` under `/Code/RAFDB/`.
 1. Unzip the data: `unzip /Code/RAFDB/aligned.zip`
 2. Change main program to executable `chmod u+x /Code/Prototype/V2_main.py`
 3. Execute main program `/Code/Prototype/V2_main.py` or `python3 /Code/Prototype/V2_main.py`  
