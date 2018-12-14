@@ -1,4 +1,4 @@
-# Facial Expression Recognition by Convolution Neural Network
+# Facial Expression Recognition by Convolutional Neural Network
 Final Project for Deep Learning (Fall 2018)@ GWU  
 Dec. 2018
 
